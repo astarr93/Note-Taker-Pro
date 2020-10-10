@@ -11,6 +11,10 @@ app.use(express.static('public'));
 require("./routes/htmlRoutes")(app);
 require("./routes/apiRoutes")(app);
 
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "public/assets/index.html"))
+})
+
 app.listen(PORT, () => {
     console.log("Server listening on: http://localhost:" + PORT);
 });
