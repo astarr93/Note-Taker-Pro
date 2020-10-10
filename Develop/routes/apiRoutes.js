@@ -12,7 +12,7 @@ module.exports = function (app) {
     app.post("/api/notes", function (req, res) {
         let newNote = req.body;
         notes.push(newNote);
-        fs.writeFileSync(db, new, function (err) {
+        fs.writeFileSync(db, newNote, function (err) {
             if (err) {
                 return console.log(err);
             }
