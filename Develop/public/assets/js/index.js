@@ -27,7 +27,7 @@ const saveNote = (note) => {
 // A function for deleting a note from the db
 const deleteNote = (id) => {
   return $.ajax({
-    url: "/api/notes/" + id,
+    url: "api/notes/" + id,
     method: "DELETE",
   });
 };
@@ -127,7 +127,7 @@ const renderNoteList = (notes) => {
     noteListItems.push(create$li("No saved Notes", false));
   }
 
-  noteListItems.forEach(note => {
+  [...notes].forEach(note => {
     const $li = create$li(note.title).data(note);
     noteListItems.push($li);
   });
