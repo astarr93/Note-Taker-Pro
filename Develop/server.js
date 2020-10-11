@@ -8,12 +8,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+// Require app routes from sub-folder
 require("./routes/htmlRoutes")(app);
 require("./routes/apiRoutes")(app);
-
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/assets/index.html"))
-})
 
 app.listen(PORT, () => {
     console.log("Server listening on: http://localhost:" + PORT);

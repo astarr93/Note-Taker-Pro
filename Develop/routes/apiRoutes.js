@@ -1,18 +1,20 @@
 const path = require("path");
 const fs = require('fs');
-const { v4: uuidv4 } = require("uuid");
+const db = require('../db/db.json');
 
 module.exports = function (app) {
 
+    let data = [];
+
     app.get("/api/notes", function (req, res) {
-        notes = fs.readFile("../db/db.json");
-        res.json(JSON.parse(notes));
+        data.push(fs.readFile(db));
+        console.log(data);
+        res.json(JSON.parse(data));
     });
 
     // app.post("/api/notes", function (req, res) {
-    //     // let newNote = req.body;
-    //     // notes.a
-    //     // console.log(savedNotes);
+    //     let newNote = req.body;
+    //     console.log("Posting note...");
     //     // notes.push(newNote);
     //     // fs.writeFileSync("./db/db.json", newNote, function (err) {
     //     //     if (err) {
