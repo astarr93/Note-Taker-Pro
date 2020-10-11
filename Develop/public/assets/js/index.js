@@ -3,7 +3,6 @@ const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
-const { v4: uuidv4 } = require("uuid");
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
@@ -28,7 +27,7 @@ const saveNote = (note) => {
 // A function for deleting a note from the db
 const deleteNote = (id) => {
   return $.ajax({
-    url: "api/notes/" + id,
+    url: "/api/notes/" + id,
     method: "DELETE",
   });
 };
@@ -128,7 +127,7 @@ const renderNoteList = (notes) => {
     noteListItems.push(create$li("No saved Notes", false));
   }
 
-  notes.forEach((note) => {
+  noteListItems.forEach(note => {
     const $li = create$li(note.title).data(note);
     noteListItems.push($li);
   });
