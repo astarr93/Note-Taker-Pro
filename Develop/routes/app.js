@@ -13,19 +13,17 @@ module.exports = function (app) {
     });
 
     app.get("/api/notes", function (req, res) {
-        res.sendFile("./db/db.json", "utf-8", function (err, data) {
-            if (err) throw err;
-            return JSON.parse(data);
-        });
-});
+        let data = readFileSync("./db/db.json", "utf-8")
+        return JSON.parse(data);
+    });
 
-app.post("/api/notes", function (req, res) {
-    let newNote = req.body;
-    newNote["id"] = uuidv4();
-    console.log("Posting note...");
-    console.log(newNote);
-    res.end();
-});
+    app.post("/api/notes", function (req, res) {
+        let newNote = req.body;
+        newNote["id"] = uuidv4();
+        console.log("Posting note...");
+        console.log(newNote);
+        res.end();
+    });
 
     // app.delete("/api/notes/:id", function (req, res) {
     //     res.sendFile(path.join(__dirname, "../public/index.html"))
