@@ -13,8 +13,8 @@ module.exports = function (app) {
     });
 
     app.get("/api/notes", function (req, res) {
-        let data = readFileSync("./db/db.json", "utf-8")
-        return JSON.parse(data);
+        let notes = readFileSync("./db/db.json", "utf-8")
+        return JSON.parse(notes);
     });
 
     app.post("/api/notes", function (req, res) {
