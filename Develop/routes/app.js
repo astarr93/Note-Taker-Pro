@@ -5,7 +5,6 @@ let savedNotes = JSON.parse(fs.readFileSync("./db/db.json"));
 
 module.exports = function (app) {
 
-
     app.get("/notes", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/notes.html"));
     });
