@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Require app routes
-require("./Develop/routes/app")(app);
+require("./routes/app")(app);
 
 app.listen(PORT, () => {
     console.log("Server listening on: http://localhost:" + PORT);
